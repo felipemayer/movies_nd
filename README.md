@@ -1,6 +1,6 @@
 # Next Movies to Watch
 
-Looking for new suggestions about which movie watch? Run "Next Movies to Watch" program and receive new suggestions for movies to watch.
+Looking for new suggestions about which movie watch? Run "Next Movies to Watch" and receive new suggestions for awesome movies to watch.
 
 ### Prerequisites
 
@@ -8,26 +8,22 @@ Python installed on your machine
 
 ### Installing
 
-How recieve new suggestions?
+How receive new suggestions?
 
-1. Fork
-2. Clone
-3. Reach the folder (using command line)
-4. Type
-
-```
-python new_movies_to_watch.py
-```
-
-5. Get new awesome suggestions
+1. Clone
+2. Reach the folder (using command line)
+3. Run
 
 ```
-until finished
+python next_movies_to_watch.py
 ```
+
+4. Get new awesome suggestions
+
 
 ### And coding style tests
 
-Explain what these tests test and why
+Usin Pep8 to coding style
 
 ```
 http://pep8online.com/
@@ -40,7 +36,7 @@ http://pep8online.com/
 
 ## Versioning
 
-We use Git for versioning.
+Git for versioning.
 
 ## Authors
 
