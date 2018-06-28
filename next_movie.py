@@ -3,7 +3,7 @@ import os
 import re
 
 
-# Styles and scripting for the page
+# The page head declaring scripts and styles
 main_page_head = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ main_page_head = '''
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Bootstrap 3 for JS -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="script.js" type="text/javascript" charset="utf-8"></script>  
+    <script src="script.js" type="text/javascript" charset="utf-8"></script>
 </head>'''
 
 
@@ -23,7 +23,7 @@ main_page_content = '''
   <body>
     <!-- Main Page Content -->
     <!-- The Modal -->
-    <div class="modal_background" id="modal"> 
+    <div class="modal_background" id="modal">
       <!-- Modal content -->
       <div class="modal-content">
           <div class="modal-header">
@@ -38,7 +38,7 @@ main_page_content = '''
 
     </div>
     <div id="header">
-        <h1>My Favorite Movies - Check it out!</h1>
+        <h1>Next movies to watch!</h1>
     </div>
     <div id="body-tiles">
         {movie_tiles}
@@ -49,11 +49,11 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="tile"  data-trailer-youtube-id="{trailer_youtube_id}" data-movie-title="{movie_title}">
-    <img class="image-tile" src="{poster_image_url}">
-    <h2>{movie_title} - {release_date}</h2>
-</div>
-'''  #noqa
+    <div class="tile"  data-yt-id="{youtube_id}" movie-title="{movie_title}">
+        <img class="image-tile" src="{poster_image_url}">
+        <h2>{movie_title} - {release_date}</h2>
+    </div>
+'''
 
 
 def create_movie_tiles_content(movies):
@@ -65,15 +65,14 @@ def create_movie_tiles_content(movies):
             r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
         youtube_id_match = youtube_id_match or re.search(
             r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
-        trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
-                              else None)
+        youtube_id = (youtube_id_match.group(0) if youtube_id_match else None)
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             release_date=movie.release_date,
-            poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            poster_image_url=movie.poster_url,
+            youtube_id=youtube_id
         )
     return content
 
