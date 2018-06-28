@@ -53,7 +53,7 @@ movie_tile_content = '''
     <img class="image-tile" src="{poster_image_url}">
     <h2>{movie_title} - {release_date}</h2>
 </div>
-'''
+'''  #noqa
 
 
 def create_movie_tiles_content(movies):
@@ -80,7 +80,7 @@ def create_movie_tiles_content(movies):
 
 def open_movies_page(movies):
     # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
+    output_file = open('next_movie.html', 'w')
 
     # Replace the movie tiles placeholder generated content
     rendered_content = main_page_content.format(
